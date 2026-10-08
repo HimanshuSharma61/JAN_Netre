@@ -8,8 +8,9 @@ import { motion } from 'framer-motion'
 import UserDetailsStep from '@/components/onboarding/UserDetailsStep'
 import PreferencesStep from '@/components/onboarding/PreferencesStep'
 import { useAnalytics } from '@/hooks/useAnalytics'
+import { getApiBaseUrl } from '@/lib/api/config'
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL
+const API_BASE_URL = getApiBaseUrl()
 
 export default function EditProfile() {
   return (

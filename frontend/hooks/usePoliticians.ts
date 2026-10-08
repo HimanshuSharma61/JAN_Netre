@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useCallback, useMemo } from "react"
 import type { Politician, ElectionType } from "@/types/politician"
+import { getApiBaseUrl } from "@/lib/api/config"
 
-const API = `${process.env.NEXT_PUBLIC_API_URL}`
+const API = getApiBaseUrl()
 
 // ─────────────────────────────────────────────────────────────────────────────
 // usePoliticians — fetch all politicians once, derive everything client-side

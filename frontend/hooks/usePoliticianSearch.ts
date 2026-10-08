@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useCallback, useRef } from "react"
 import type { Politician } from "@/types/politician"
+import { getApiBaseUrl } from "@/lib/api/config"
 
-const API = `${process.env.NEXT_PUBLIC_API_URL}`
+const API = getApiBaseUrl()
 const DEBOUNCE_MS = 280
 const MIN_QUERY_LENGTH = 2
 

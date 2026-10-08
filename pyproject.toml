@@ -138,3 +138,7 @@ module = [
     "app.database.models.*",
 ]
 ignore_errors = true
+
+[tool.vercel]
+entrypoint = "wsgi:app"
+

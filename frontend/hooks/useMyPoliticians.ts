@@ -7,8 +7,9 @@ import {
     setMyPoliticianIds,
     type MyPoliticianIds,
 } from "@/lib/myPoliticiansStorage"
+import { getApiBaseUrl } from "@/lib/api/config"
 
-const API = `${process.env.NEXT_PUBLIC_API_URL}`
+const API = getApiBaseUrl()
 
 /** Pure: find politician by id in list; returns undefined if not found. */
 export function findPoliticianById(

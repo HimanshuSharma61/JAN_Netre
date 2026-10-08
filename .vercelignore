@@ -1,26 +1,26 @@
-# Ignore Python backend files and directories
-app/
-alembic/
-scripts/
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Tests & caches
 tests/
-chroma_db/
-docker/
-run.py
-pyproject.toml
-requirements.txt
-requirements-test.txt
-Makefile
-alembic.ini
-docker-compose.yml
-docker-compose.prod.yml
-Dockerfile
-.flake8
+.pytest_cache/
+__pycache__/
+*.pyc
+
+# Local databases and development envs
+*.db
 .env
 .env.local
 .env.*.local
-*.pyc
-__pycache__/
-.pytest_cache/
-.venv/
-venv/
+
+# Node modules & builds
 node_modules/
+.next/
+
+# Docker & local tooling
+docker/
+Dockerfile
+docker-compose*.yml
+.flake8

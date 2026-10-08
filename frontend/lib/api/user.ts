@@ -1,5 +1,4 @@
-const API_BASE_URL =
-    process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1"
+import { getApiBaseUrl } from "./config"
 
 export interface UserData {
     id?: string
@@ -18,14 +17,8 @@ export const userService = {
      * Used during authentication
      */
     async syncUser(userData: UserData) {
-        console.log("userData", `${API_BASE_URL}/users/sync`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(userData)
-        })
-        const response = await fetch(`${API_BASE_URL}/users/sync`, {
+        const baseUrl = getApiBaseUrl()
+        const response = await fetch(`${baseUrl}/users/sync`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -45,7 +38,8 @@ export const userService = {
      * Used for onboarding and profile updates
      */
     async updateUser(userId: string, data: UserData) {
-        const response = await fetch(`${API_BASE_URL}/users/${userId}`, {
+        const baseUrl = getApiBaseUrl()
+        const response = await fetch(`${baseUrl}/users/${userId}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
@@ -62,7 +56,8 @@ export const userService = {
     },
 
     async checkUsername(username: string, userId?: string) {
-        const response = await fetch(`${API_BASE_URL}/users/check-username`, {
+        const baseUrl = getApiBaseUrl()
+        const response = await fetch(`${baseUrl}/users/check-username`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
