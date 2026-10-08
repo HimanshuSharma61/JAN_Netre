@@ -1,0 +1,40 @@
+# Rajniti - Python Dependencies
+# Install: pip install -r requirements.txt
+
+# --- Web Framework ---
+flask>=3.0.0
+flask-cors>=4.0.0
+flask-login>=0.6.3
+gunicorn>=21.2.0
+
+# --- Database ---
+sqlalchemy>=2.0.23
+alembic>=1.13.0
+psycopg2-binary>=2.9.9
+
+# --- Auth ---
+authlib>=1.6.6
+pyjwt>=2.10.1
+
+# --- LLM / AI Agents ---
+langchain-google-genai>=2.0.0    # Gemini (primary)
+langchain-openai>=0.3.0          # OpenAI / Perplexity fallback
+langchain-community>=0.3.0
+
+# --- Vector Store ---
+chromadb>=0.5.0
+
+# --- Data / Validation ---
+pydantic>=2.10.0
+numpy>=1.26.4
+
+# --- HTTP / Scraping ---
+httpx>=0.25.2
+requests>=2.32.5
+beautifulsoup4>=4.12.2
+
+# --- Agent Tools ---
+ddgs>=7.0.0                      # Free web search (no API key)
+
+# --- Utilities ---
+python-dotenv>=1.0.0

@@ -1,0 +1,43 @@
+# Just set DATABASE_URL in .env - any user/db will be auto-created
+
+services:
+    postgres:
+        image: postgres:16-alpine
+        container_name: rajniti-postgres
+        environment:
+            POSTGRES_HOST_AUTH_METHOD: trust
+            DATABASE_URL: ${DATABASE_URL}
+        ports:
+            - "5432:5432"
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+            - ./docker/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+        profiles:
+            - local-db
+
+    rajniti-api:
+        build:
+            context: .
+            target: development
+        container_name: rajniti-api
+        env_file:
+            - .env
+        ports:
+            - "${FLASK_PORT:-8000}:8000"
+        volumes:
+            - ./app:/app/app
+            - ./run.py:/app/run.py
+            - ./alembic.ini:/app/alembic.ini
+            - ./alembic:/app/alembic
+        depends_on:
+            postgres:
+                condition: service_healthy
+                required: false
+
+volumes:
+    postgres_data:
